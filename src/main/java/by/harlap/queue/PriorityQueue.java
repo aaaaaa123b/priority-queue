@@ -1,4 +1,4 @@
-package by.harlap;
+package by.harlap.queue;
 
 public interface PriorityQueue <T>{
 

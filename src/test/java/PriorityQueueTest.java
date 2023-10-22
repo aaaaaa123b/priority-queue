@@ -1,5 +1,5 @@
-import by.harlap.PriorityQueue;
-import by.harlap.impl.PriorityQueueImpl;
+import by.harlap.queue.PriorityQueue;
+import by.harlap.queue.impl.PriorityQueueImpl;
 import org.junit.jupiter.api.Test;
 import util.Kitten;
 import util.KittensByAgeComparator;

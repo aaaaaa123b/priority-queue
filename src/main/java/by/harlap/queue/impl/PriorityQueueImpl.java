@@ -1,6 +1,6 @@
-package by.harlap.impl;
+package by.harlap.queue.impl;
 
-import by.harlap.PriorityQueue;
+import by.harlap.queue.PriorityQueue;
 
 import java.util.Arrays;
 import java.util.Comparator;
