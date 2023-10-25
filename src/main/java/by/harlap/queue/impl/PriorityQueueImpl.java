@@ -10,15 +10,15 @@ public class PriorityQueueImpl<T> implements PriorityQueue<T> {
     private static final int DEFAULT_CAPACITY = 8;
     private T[] heap;
     int size = 0;
-    private final Comparator<T> comparator;
+    private final Comparator<? super T> comparator;
 
     @SuppressWarnings("unchecked")
     public PriorityQueueImpl() {
-        this((Comparator<T>) Comparator.naturalOrder());
+        this((Comparator<? super T>) Comparator.naturalOrder());
     }
 
     @SuppressWarnings("unchecked")
-    public PriorityQueueImpl(Comparator<T> comparator) {
+    public PriorityQueueImpl(Comparator<? super T> comparator) {
         this.comparator = comparator;
         heap = (T[]) new Object[DEFAULT_CAPACITY];
     }
@@ -30,15 +30,11 @@ public class PriorityQueueImpl<T> implements PriorityQueue<T> {
     }
 
     private void siftDown(int i) {
-        int left;
-        int right;
-        int smallest;
 
-        while (true) {
-
-            left = 2 * i + 1;
-            right = 2 * i + 2;
-            smallest = i;
+        while (i < size) {
+            int left = 2 * i + 1;
+            int right = 2 * i + 2;
+            int smallest = i;
 
             if (left < size && comparator.compare(heap[left], heap[smallest]) < 0) {
                 smallest = left;
@@ -84,7 +80,7 @@ public class PriorityQueueImpl<T> implements PriorityQueue<T> {
 
     public T poll() {
         if (isEmpty()) {
-            throw new IllegalStateException("Queue is empty");
+            return null;
         }
 
         T root = heap[0];
@@ -96,7 +92,7 @@ public class PriorityQueueImpl<T> implements PriorityQueue<T> {
 
     public T peek() {
         if (isEmpty()) {
-            throw new IllegalStateException("Queue is empty.");
+            return null;
         }
         return heap[0];
     }
